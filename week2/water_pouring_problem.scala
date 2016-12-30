@@ -52,7 +52,7 @@ class Puring(capacity: Vector[Int]) {
 
   val pathSets = from(Set(initialPath))
 
-  def solutio(target: Int): Stream[Path] = 
+  def solution(target: Int): Stream[Path] = 
     for {
       pathSet <- pathSets
       path <- pathSet
