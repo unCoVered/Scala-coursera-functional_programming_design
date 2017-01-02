@@ -17,4 +17,24 @@ abstract class QuickCheckHeap extends Properties("Heap") with IntHeap {
     findMin(insert(m, h)) == m
   }
 
+  // Example
+  property("empty") = forAll { a: Int =>
+    val h = empty
+    isEmpty(h) == true
+  }
+
+  // Example generator
+  lazy val genMap: Gen[Map[Int, Int]] = for {
+    k <- arbitrary[Int]
+    v <- arbitrary[Int]
+    m <- oneOf(const(Map.empty[Int, Int]), genMap)
+  } yield m.updated(k, v)
+
+  // Example property which uses GenMap
+  property("map1") = forAll { m: Map[Int, Int] =>
+    val k = 3;
+    val v = 5;
+    val m2 = m.updated(k, v)
+    m2(k) == v
+  }
 }
