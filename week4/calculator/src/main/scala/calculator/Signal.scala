@@ -23,7 +23,8 @@ class Signal[T](expr: => T) {
       val obs = observers
       observers = Set()
       obs.foreach(_.computeValue())
-    //}
+    //}d
+
   }
 
   protected def update(expr: => T): Unit = {
