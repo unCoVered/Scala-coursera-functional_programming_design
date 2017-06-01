@@ -22,11 +22,12 @@ object Calculator {
     expr match {
       case Literal(v) => v
       case Ref(name) => {
-        val reference = getReferenceExpr(name, references)
+        val reference = getReferenceExpr(name, references) 
         eval(reference, references - name)
       }
       case Plus(a, b) => eval(a, references) + eval(b, references)
-      case Minus(a, b) => eval(a, references) - eval(b, references)
+      case Minus(a, b) => eval(a, references) - eval(b, references
+      
       case Times(a, b) => eval(a, references) * eval(b, references)
       case Divide(a, b) => eval(a, references) / eval(b, references)
     }
